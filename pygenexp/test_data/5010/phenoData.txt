@@ -1,0 +1,7 @@
+Sample	Key
+9868701_532.xys	brain
+9868901_532.xys	brain
+9869001_532.xys	brain
+9870301_532.xys	universal reference
+9870401_532.xys	universal reference
+9870601_532.xys	universal reference
