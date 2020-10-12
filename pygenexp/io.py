@@ -1,8 +1,8 @@
-import pandas as pd
-import GEOparse
 import csv
 import os
-import re
+
+import GEOparse
+import pandas as pd
 
 
 def read_illumina(filename):
@@ -29,20 +29,16 @@ def read_illumina(filename, GSE="GSE40561"):
     return res_df
 
 
-def read_ngd(filename):
-    pass
-
-
 def read_xys(xys_files, sep="\t"):
     for xys_file in xys_files:
-        assert xys_file.endswith('.xys'), "You must specify the path to the .xys files"
+        assert xys_file.endswith(".xys"), "You must specify the path to the .xys files"
         assert os.path.exists(xys_file), "One of the .xys files does not exist"
     new_df = pd.DataFrame()
 
     for xys in xys_files:
         xys_df = pd.read_csv(xys, sep=sep, skiprows=1)  # TO DO: add param
-        assert ("SIGNAL" in xys_df), ".xys file must contain 'SIGNAL' column"
-        new_df[os.path.basename(xys)] = xys_df['SIGNAL']
+        assert "SIGNAL" in xys_df, ".xys file must contain 'SIGNAL' column"
+        new_df[os.path.basename(xys)] = xys_df["SIGNAL"]
 
     return new_df
 
@@ -58,5 +54,3 @@ def read_bgx(filename):
                 break
 
     return meta_data, pd.read_csv(filename, sep="\t", skiprows=i)
-
-
